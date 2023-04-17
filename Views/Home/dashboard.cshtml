@@ -55,7 +55,7 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="submit">
+                        <input type="submit" class="cute-btn" value="submit">
                     </div>
                 </form>
 
@@ -107,258 +107,49 @@
     <div class="col-lg-2 border-right" id="sidebar-wrapper" style="height:20em;">
         <h3 class="text-center" style="margin-top:1em;color:rgba(110, 187, 56, 0.87);"> Documents Dashboard</h3>
         <div class="list-group list-group-flush" style="margin-top:2em;">
-            <a href="/Home/dashboard?page=All" class="list-group-item list-group-item-action fw-bold" data-target="all"><i class="bi bi-balloon-heart-fill"></i>All</a>
-            <a href="/Home/dashboard?page=Deleted" class="list-group-item list-group-item-action fw-bold" data-target="deleted"><i class="bi bi-check-all"></i>Deleted</a>
-            <a href="/Home/dashboard?page=Recent" class="list-group-item list-group-item-action fw-bold" data-target="recent"><i class="bi bi-x-square-fill"></i>Recent</a>
+            <a href="/Home/dashboard?page=All" class="list-group-item list-group-item-action fw-bold" data-target="All"><i class="bi bi-balloon-heart-fill"></i>All</a>
         </div>
     </div>
 
     <div id="page-content-wrapper" class="col-lg-8">
         <div class="container-fluid">
-            @if (ViewBag.Pagess == "recent")
+            @if (ViewBag.Pagess == "Recent")
             {
-                <h3 style="color:rgba(0, 95, 167, 1);margin-top:2em;"> Recent Documents</h3>
-
-                <div class="row justify-content-between" style="margin-top:2em; margin-left:2em;">
-                    <div class="col-lg-2 text-center p-4" style="height: 18em;width: 19.5em;background-color: white; border-radius: 10px;margin-bottom:2em;margin-right:1em;">
-                        <p class="fw-bold"> Appointment Title</p>
-                        <p class="" style=" line-height: 1.5em;max-height:3em; overflow: hidden;text-overflow: ellipsis;width: 100%;">
-                            Appointment Purpose... There are five tiers to the Bootstrap grid system, one for each range of devices we support. Each tier starts
-                            at a minimum viewport size and automatically applies to the larger devices unless overridden.There are five tiers to the Bootstrap
-                            grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the
-                            larger devices unless overridden.
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Start time - </p>
-                            <p class="d-inline-block"> 10:00 P.M </p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Duration - </p>
-                            <p class="d-inline-block">1 Hour </p>
-                        </div>
-                        <p class="text-center" style="font-size:1.5em;color: rgba(243, 90, 90, 0.87);"> Appointment Status</p>
-                    </div>
-
-                    <div class="col-lg-2 text-center p-4" style="height: 18em;width: 19.5em;background-color: white; border-radius: 10px;margin-bottom:2em;margin-right:1em;">
-                        <p class="fw-bold"> Appointment Title</p>
-                        <p class="" style=" line-height: 1.5em;max-height:3em; overflow: hidden;text-overflow: ellipsis;width: 100%;">
-                            Appointment Purpose... There are five tiers to the Bootstrap grid system, one for each range of devices we support. Each tier starts
-                            at a minimum viewport size and automatically applies to the larger devices unless overridden.There are five tiers to the Bootstrap
-                            grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the
-                            larger devices unless overridden.
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Start time - </p>
-                            <p class="d-inline-block"> 10:00 P.M </p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Duration - </p>
-                            <p class="d-inline-block">1 Hour </p>
-                        </div>
-                        <p class="text-center" style="font-size:1.5em;color: rgba(243, 90, 90, 0.87);"> Appointment Status</p>
-                    </div>
-                    <div class="col-lg-2 text-center p-4" style="height: 18em;width: 19.5em;background-color: white; border-radius: 10px;margin-bottom:2em;margin-right:1em;">
-                        <p class="fw-bold"> Appointment Title</p>
-                        <p class="" style=" line-height: 1.5em;max-height:3em; overflow: hidden;text-overflow: ellipsis;width: 100%;">
-                            Appointment Purpose... There are five tiers to the Bootstrap grid system, one for each range of devices we support. Each tier starts
-                            at a minimum viewport size and automatically applies to the larger devices unless overridden.There are five tiers to the Bootstrap
-                            grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the
-                            larger devices unless overridden.
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Start time - </p>
-                            <p class="d-inline-block"> 10:00 P.M </p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Duration - </p>
-                            <p class="d-inline-block">1 Hour </p>
-                        </div>
-                        <p class="text-center" style="font-size:1.5em;color: rgba(243, 90, 90, 0.87);"> Appointment Status</p>
-                    </div>
-
-                    <div class="col-lg-2 text-center p-4" style="height: 18em;width: 19.5em;background-color: white; border-radius: 10px;margin-bottom:2em;margin-right:1em;">
-                        <p class="fw-bold"> Appointment Title</p>
-                        <p class="" style=" line-height: 1.5em;max-height:3em; overflow: hidden;text-overflow: ellipsis;width: 100%;">
-                            Appointment Purpose... There are five tiers to the Bootstrap grid system, one for each range of devices we support. Each tier starts
-                            at a minimum viewport size and automatically applies to the larger devices unless overridden.There are five tiers to the Bootstrap
-                            grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the
-                            larger devices unless overridden.
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Start time - </p>
-                            <p class="d-inline-block"> 10:00 P.M </p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Duration - </p>
-                            <p class="d-inline-block">1 Hour </p>
-                        </div>
-                        <p class="text-center" style="font-size:1.5em;color: rgba(243, 90, 90, 0.87);"> Appointment Status</p>
-                    </div>
-
-                </div>
+                
 
             }
             else if (ViewBag.Pagess == "Deleted")
             {
-                <h3 style="color:rgba(0, 95, 167, 1);margin-top:2em;"> Deleted Documents</h3>
-
-                <div class="row justify-content-between" style="margin-top:2em; margin-left:2em;">
-                    <div class="col-lg-2 text-center p-4" style="height: 18em;width: 19.5em;background-color: white; border-radius: 10px;margin-bottom:2em;margin-right:1em;">
-                        <p class="fw-bold"> Appointment Title</p>
-                        <p class="" style=" line-height: 1.5em;max-height:3em; overflow: hidden;text-overflow: ellipsis;width: 100%;">
-                            Appointment Purpose... There are five tiers to the Bootstrap grid system, one for each range of devices we support. Each tier starts
-                            at a minimum viewport size and automatically applies to the larger devices unless overridden.There are five tiers to the Bootstrap
-                            grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the
-                            larger devices unless overridden.
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Start time - </p>
-                            <p class="d-inline-block"> 10:00 P.M </p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Duration - </p>
-                            <p class="d-inline-block">1 Hour </p>
-                        </div>
-                        <p class="text-center" style="font-size:1.5em;color: rgba(243, 90, 90, 0.87);"> Appointment Status</p>
-                    </div>
-
-                    <div class="col-lg-2 text-center p-4" style="height: 18em;width: 19.5em;background-color: white; border-radius: 10px;margin-bottom:2em;margin-right:1em;">
-                        <p class="fw-bold"> Appointment Title</p>
-                        <p class="" style=" line-height: 1.5em;max-height:3em; overflow: hidden;text-overflow: ellipsis;width: 100%;">
-                            Appointment Purpose... There are five tiers to the Bootstrap grid system, one for each range of devices we support. Each tier starts
-                            at a minimum viewport size and automatically applies to the larger devices unless overridden.There are five tiers to the Bootstrap
-                            grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the
-                            larger devices unless overridden.
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Start time - </p>
-                            <p class="d-inline-block"> 10:00 P.M </p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Duration - </p>
-                            <p class="d-inline-block">1 Hour </p>
-                        </div>
-                        <p class="text-center" style="font-size:1.5em;color: rgba(243, 90, 90, 0.87);"> Appointment Status</p>
-                    </div>
-                    <div class="col-lg-2 text-center p-4" style="height: 18em;width: 19.5em;background-color: white; border-radius: 10px;margin-bottom:2em;margin-right:1em;">
-                        <p class="fw-bold"> Appointment Title</p>
-                        <p class="" style=" line-height: 1.5em;max-height:3em; overflow: hidden;text-overflow: ellipsis;width: 100%;">
-                            Appointment Purpose... There are five tiers to the Bootstrap grid system, one for each range of devices we support. Each tier starts
-                            at a minimum viewport size and automatically applies to the larger devices unless overridden.There are five tiers to the Bootstrap
-                            grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the
-                            larger devices unless overridden.
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Start time - </p>
-                            <p class="d-inline-block"> 10:00 P.M </p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Duration - </p>
-                            <p class="d-inline-block">1 Hour </p>
-                        </div>
-                        <p class="text-center" style="font-size:1.5em;color: rgba(243, 90, 90, 0.87);"> Appointment Status</p>
-                    </div>
-
-                    <div class="col-lg-2 text-center p-4" style="height: 18em;width: 19.5em;background-color: white; border-radius: 10px;margin-bottom:2em;margin-right:1em;">
-                        <p class="fw-bold"> Appointment Title</p>
-                        <p class="" style=" line-height: 1.5em;max-height:3em; overflow: hidden;text-overflow: ellipsis;width: 100%;">
-                            Appointment Purpose... There are five tiers to the Bootstrap grid system, one for each range of devices we support. Each tier starts
-                            at a minimum viewport size and automatically applies to the larger devices unless overridden.There are five tiers to the Bootstrap
-                            grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the
-                            larger devices unless overridden.
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Start time - </p>
-                            <p class="d-inline-block"> 10:00 P.M </p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Duration - </p>
-                            <p class="d-inline-block">1 Hour </p>
-                        </div>
-                        <p class="text-center" style="font-size:1.5em;color: rgba(243, 90, 90, 0.87);"> Appointment Status</p>
-                    </div>
-
-                </div>
+               
 
             }
             else
             {
                 <h3 style="color:rgba(0, 95, 167, 1);margin-top:2em;"> All Documents</h3>
                 <div class="row justify-content-between" style="margin-top:2em; margin-left:2em;">
-                    <div class="col-lg-2 text-center p-4" style="height: 18em;width: 19.5em;background-color: white; border-radius: 10px;margin-bottom:2em;margin-right:1em;">
-                        <p class="fw-bold"> Appointment Title</p>
-                        <p class="" style=" line-height: 1.5em;max-height:3em; overflow: hidden;text-overflow: ellipsis;width: 100%;">
-                            Appointment Purpose... There are five tiers to the Bootstrap grid system, one for each range of devices we support. Each tier starts
-                            at a minimum viewport size and automatically applies to the larger devices unless overridden.There are five tiers to the Bootstrap
-                            grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the
-                            larger devices unless overridden.
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Start time - </p>
-                            <p class="d-inline-block"> 10:00 P.M </p>
+                    
+                    @foreach (var documents in ViewBag.documents)
+                    {
+                        <div class="col-lg-2 text-center p-4" style="height: 18em;width: 19.5em;background-color: white; border-radius: 10px;margin-bottom:2em;margin-right:1em;">
+                            <p class="fw-bold"> @documents.DocumentTitle</p>
+                            <p class="" style=" line-height: 1.5em;max-height:3em; overflow: hidden;text-overflow: ellipsis;width: 100%;">
+                               @documents.Content
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <p class="d-inline-block"> Created On - </p>
+                                <p class="d-inline-block"> @documents.CreatedOn.ToString() </p>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <p class="d-inline-block"> LastEdited - </p>
+                                <p class="d-inline-block"> @documents.LastEdited.ToString() </p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-sm-evenly" style="margin-top:1em;">
+                               
+                                <i class="bi bi-pencil-square" style="font-size:1.5em;color: rgba(110, 187, 56, 0.87);"></i>
+                                <i class="bi bi-x-square-fill" style="font-size:1.5em;color: rgba(243, 90, 90, 0.87);"></i>
+                            </div>
                         </div>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Duration - </p>
-                            <p class="d-inline-block">1 Hour </p>
-                        </div>
-                        <p class="text-center" style="font-size:1.5em;color: rgba(243, 90, 90, 0.87);"> Appointment Status</p>
-                    </div>
-
-                    <div class="col-lg-2 text-center p-4" style="height: 18em;width: 19.5em;background-color: white; border-radius: 10px;margin-bottom:2em;margin-right:1em;">
-                        <p class="fw-bold"> Appointment Title</p>
-                        <p class="" style=" line-height: 1.5em;max-height:3em; overflow: hidden;text-overflow: ellipsis;width: 100%;">
-                            Appointment Purpose... There are five tiers to the Bootstrap grid system, one for each range of devices we support. Each tier starts
-                            at a minimum viewport size and automatically applies to the larger devices unless overridden.There are five tiers to the Bootstrap
-                            grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the
-                            larger devices unless overridden.
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Start time - </p>
-                            <p class="d-inline-block"> 10:00 P.M </p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Duration - </p>
-                            <p class="d-inline-block">1 Hour </p>
-                        </div>
-                        <p class="text-center" style="font-size:1.5em;color: rgba(243, 90, 90, 0.87);"> Appointment Status</p>
-                    </div>
-                    <div class="col-lg-2 text-center p-4" style="height: 18em;width: 19.5em;background-color: white; border-radius: 10px;margin-bottom:2em;margin-right:1em;">
-                        <p class="fw-bold"> Appointment Title</p>
-                        <p class="" style=" line-height: 1.5em;max-height:3em; overflow: hidden;text-overflow: ellipsis;width: 100%;">
-                            Appointment Purpose... There are five tiers to the Bootstrap grid system, one for each range of devices we support. Each tier starts
-                            at a minimum viewport size and automatically applies to the larger devices unless overridden.There are five tiers to the Bootstrap
-                            grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the
-                            larger devices unless overridden.
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Start time - </p>
-                            <p class="d-inline-block"> 10:00 P.M </p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Duration - </p>
-                            <p class="d-inline-block">1 Hour </p>
-                        </div>
-                        <p class="text-center" style="font-size:1.5em;color: rgba(243, 90, 90, 0.87);"> Appointment Status</p>
-                    </div>
-
-                    <div class="col-lg-2 text-center p-4" style="height: 18em;width: 19.5em;background-color: white; border-radius: 10px;margin-bottom:2em;margin-right:1em;">
-                        <p class="fw-bold"> Appointment Title</p>
-                        <p class="" style=" line-height: 1.5em;max-height:3em; overflow: hidden;text-overflow: ellipsis;width: 100%;">
-                            Appointment Purpose... There are five tiers to the Bootstrap grid system, one for each range of devices we support. Each tier starts
-                            at a minimum viewport size and automatically applies to the larger devices unless overridden.There are five tiers to the Bootstrap
-                            grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the
-                            larger devices unless overridden.
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Start time - </p>
-                            <p class="d-inline-block"> 10:00 P.M </p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <p class="d-inline-block"> Duration - </p>
-                            <p class="d-inline-block">1 Hour </p>
-                        </div>
-                        <p class="text-center" style="font-size:1.5em;color: rgba(243, 90, 90, 0.87);"> Appointment Status</p>
-                    </div>
+                    }
 
                 </div>
 

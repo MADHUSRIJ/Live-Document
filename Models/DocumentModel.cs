@@ -19,7 +19,13 @@ namespace Live_Document___Rich_Text_Editor.Models
                 while (reader.Read())
                 {
                     DocumentEntityModel model = new DocumentEntityModel();
+                    model.DocumentId = (int)reader["DocumentId"];
+                    model.DocumentTitle = (string)reader["DocumentTitle"];
+                    model.Content = (string)reader["Content"];
+                    model.CreatedOn = (DateTime)reader["CreatedAt"];
+                    model.LastEdited = (DateTime)reader["LastEdited"];
 
+                    DocumentList.Add(model);
                 }
 
             }

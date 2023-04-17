@@ -13,6 +13,7 @@ namespace Live_Document___Rich_Text_Editor.Controllers
     public class HomeController : Controller
     {
         public static UserModel User { get; set; }
+        public static DocumentModel document { get; set; }
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration _configuration;
         public HomeController(IConfiguration configuration)
@@ -112,7 +113,7 @@ namespace Live_Document___Rich_Text_Editor.Controllers
         {
             UserModel user = getCurrentUser();
             ViewBag.user = user;
-            DocumentModel document = new DocumentModel();
+            document = new DocumentModel();
             document.getDocumentList(Convert.ToInt32(user.id));
             ViewBag.documents = document.DocumentList;
 

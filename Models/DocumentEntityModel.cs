@@ -5,7 +5,7 @@
         public int DocumentId { get; set; }
         public string DocumentTitle { get; set; }
         public string Content { get; set; }
-        public DateTime CreatedOn { get;  }
+        public DateTime CreatedOn { get; set; }
         public DateTime LastEdited { get; set; }
     }
 }
