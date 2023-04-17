@@ -43,15 +43,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/home/dashboard" method="post">
+                <form action="/home/submit" method="post">
                     <input type="text" asp-for="DocumentId" value="@ViewBag.user.id" hidden="true" >
                     <div class="form-group">
                         <label for="jobrole">Document Title </label>
-                        <input type="text" class="form-control" id="jobrole" placeholder="Title" asp-for="DocumentTitle">
+                        <input type="text" class="form-control" id="DocumentTitle" placeholder="Document Title" asp-for="DocumentTitle">
                     </div>
                     <div class="form-group">
                         <label for="company">Content </label>
-                        <textarea class="form-control" id="purpose" name="purpose" rows="3" placeholder="Content" asp-for="Content"></textarea>
+                        <textarea type="text" class="form-control" id="Content" name="Content" rows="3" placeholder="Content" asp-for="Content"></textarea>
                     </div>
                     <br>
                     <div class="form-group">

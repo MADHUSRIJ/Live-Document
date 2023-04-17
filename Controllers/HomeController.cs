@@ -42,11 +42,18 @@ namespace Live_Document___Rich_Text_Editor.Controllers
 
             if (user.verifyUser())
             {
-                User = user;
-                string token = CreateToken();
-                //Response.Headers.Add("Authorization", "Bearer "+ token);
-                Response.Cookies.Append("auth_token", token);
-                return RedirectToAction("dashboard");
+                try
+                {
+                    User = user;
+                    string token = CreateToken();
+                    //Response.Headers.Add("Authorization", "Bearer "+ token);
+                    Response.Cookies.Append("auth_token", token);
+                    return RedirectToAction("dashboard");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Login Post Controller "+ex.Message);
+                }
             }
             return View();
         }
@@ -54,24 +61,32 @@ namespace Live_Document___Rich_Text_Editor.Controllers
         [HttpPost]
         public string CreateToken()
         {
-            List<Claim> claim = new List<Claim>() {
+            try
+            {
+                List<Claim> claim = new List<Claim>() {
             new Claim(ClaimTypes.Name, User.username),
             new Claim(ClaimTypes.Sid,User.id),
             new Claim(ClaimTypes.MobilePhone,User.phone)
             };
-            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
-                _configuration.GetSection("AppSettings:Token").Value
-                ));
-            var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+                var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
+                    _configuration.GetSection("AppSettings:Token").Value
+                    ));
+                var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
-            var token = new JwtSecurityToken(
-                claims: claim,
-                expires: DateTime.Now.AddHours(2),
-                signingCredentials: cred
-                );
-            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-
-            return jwt;
+                var token = new JwtSecurityToken(
+                    claims: claim,
+                    expires: DateTime.Now.AddHours(2),
+                    signingCredentials: cred
+                    );
+                var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+                return jwt;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Create token Controller"+ex.Message);
+            }
+            return "";
+            
         }
 
 
@@ -82,27 +97,54 @@ namespace Live_Document___Rich_Text_Editor.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Submit()
+        {
+            try
+            {
+                DocumentModel model = new DocumentModel();
+                var user = User;
+
+                Console.WriteLine("Submit Controller" + Request.Form["DocumentTitle"]);
+                model.SaveDocument(Convert.ToInt32(user.id), Request.Form["DocumentTitle"], Request.Form["Content"]);
+               
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Submit Controller Exception "+ex.Message);
+            }
+            return RedirectToAction("dashboard");
+        }
         private UserModel getCurrentUser()
         {
-            var identity = HttpContext.User.Identity as ClaimsIdentity;
-            Console.WriteLine(identity);
+            try
+            {
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
 
-            string authorizationHeader = HttpContext.Request.Headers["Authorization"];
-            if (!string.IsNullOrEmpty(authorizationHeader) && authorizationHeader.StartsWith("Bearer "))
-            {
-                string token = authorizationHeader.Substring("Bearer ".Length).Trim();
-                // Do something with the token
-                Console.WriteLine(token);
-            }
-            if (identity != null)
-            {
-                var userClaims = identity.Claims;
-                return new UserModel
+                string authorizationHeader = HttpContext.Request.Headers["Authorization"];
+                if (!string.IsNullOrEmpty(authorizationHeader) && authorizationHeader.StartsWith("Bearer "))
                 {
-                    username = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Name)?.Value,
-                    id = (userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Sid)?.Value),
-                    phone = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.MobilePhone)?.Value
-                };
+                    string token = authorizationHeader.Substring("Bearer ".Length).Trim();
+                    // Do something with the token
+                    Console.WriteLine(token);
+                }
+                if (identity != null)
+                {
+                    var userClaims = identity.Claims;
+                    string userid = (userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Sid)?.Value);
+                    string username = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Name)?.Value;
+                    Console.WriteLine("Get curr user "+userid+" name "+username);
+                    return new UserModel
+                    {
+                        username = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Name)?.Value,
+                        id = (userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Sid)?.Value),
+                        phone = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.MobilePhone)?.Value
+                    };
+                }
+            }
+            catch(Exception ex )
+            {
+                Console.WriteLine("Get current user controller "+ex.Message);
             }
             return null;
         }
@@ -111,12 +153,19 @@ namespace Live_Document___Rich_Text_Editor.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult dashboard()
         {
-            UserModel user = getCurrentUser();
-            ViewBag.user = user;
-            document = new DocumentModel();
-            document.getDocumentList(Convert.ToInt32(user.id));
-            ViewBag.documents = document.DocumentList;
+            try
+            {
+                UserModel user = getCurrentUser();
+                ViewBag.user = user;
+                document = new DocumentModel();
+                document.getDocumentList(Convert.ToInt32(user.id));
+                ViewBag.documents = document.DocumentList;
 
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Dashboard Controller "+ex.Message);
+            }
             return View();
         }
 
