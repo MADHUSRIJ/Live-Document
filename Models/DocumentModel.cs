@@ -138,5 +138,35 @@ namespace Live_Document___Rich_Text_Editor.Models
 
             return false;
         }
+
+        public bool DeleteDocument(int docId, int UserId)
+        {
+            try
+            {
+
+                SqlConnection conn = new SqlConnection("Data Source=5CG9441HWP;Initial Catalog=TextEditor;Integrated Security=True;Encrypt=False;");
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = $"DELETE FROM DOCUMENTS WHERE DocumentId= {docId} AND UserId = {UserId}";
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+
+                    Console.WriteLine("Deleted Successfully");
+
+                    return true;
+                }
+
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine("Delete document model " + e.Message);
+
+            }
+
+            return false;
+        }
     }
 }

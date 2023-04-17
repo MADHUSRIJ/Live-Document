@@ -240,6 +240,22 @@ namespace Live_Document___Rich_Text_Editor.Controllers
             return RedirectToAction("dashboard", "Home");
         }
 
+        [HttpGet]
+        public IActionResult DeleteDocs(int docId)
+        {
+            try
+            {
+                Console.WriteLine("Delete Document Id " + docId + " User " + User.id);
+                DocumentModel model = new DocumentModel();
+                var document = model.DeleteDocument(docId, Convert.ToInt32(User.id));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Delete Docs Get Catch " + ex.Message);
+            }
+            return RedirectToAction("dashboard", "Home");
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
