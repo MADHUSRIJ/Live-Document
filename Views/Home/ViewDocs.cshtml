@@ -5,12 +5,54 @@
     Layout = "~/Views/Shared/LayoutHome.cshtml";
 }
 
+<style>
+    .word-convert:hover {
+        cursor: pointer;
+    }
 
+</style>
 
 <div class="" style="background-color:aliceblue;padding:2em;height:30em;overflow: auto;">
     @foreach (var data in Model)
     {
-        <h1> @data.DocumentTitle</h1>
-        <p style="margin-top: 2em;"> @data.Content</p>
+        <div class="col">
+            <h1 style="display:inline-block"> @data.DocumentTitle</h1>
+            <div style="display:inline-block" class="col word-convert" data-document-id="@data.DocumentId">
+                <i class="bi bi-arrow-down-right-square-fill" style="font-size:1.5em;color: rgba(50, 176, 229, 0.87);display:inline-block"></i>
+                <p style="display:inline-block">Download</p>
+            </div>
+        </div>
+        <div id="content-@data.DocumentId">
+            <p style="margin-top: 2em;"> @data.Content</p>
+        </div>
     }
 </div>
+
+@section scripts {
+    <script>
+        document.querySelectorAll(".word-convert").forEach(function (button) {
+            button.addEventListener("click", function () {
+                var documentId = this.dataset.documentId;
+                var htmlContent = document.querySelector("#content-" + documentId).innerHTML;
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/ConvertToWord",
+                    data: { htmlContent: htmlContent },
+                    success: function (data) {
+                        console.log("Conversion successful");
+                        var link = document.createElement("a");
+                        link.href = window.URL.createObjectURL(data);
+                        link.download = "document-" + documentId + ".doc";
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("Error:", error);
+                    }
+                });
+            });
+        });
+    </script>
+}

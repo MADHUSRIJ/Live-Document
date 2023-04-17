@@ -7,6 +7,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using static System.Net.Mime.MediaTypeNames;
+using Microsoft.Office.Interop.Word;
+using Application = Microsoft.Office.Interop.Word.Application;
 
 namespace Live_Document___Rich_Text_Editor.Controllers
 {
@@ -254,6 +257,31 @@ namespace Live_Document___Rich_Text_Editor.Controllers
                 Console.WriteLine("Delete Docs Get Catch " + ex.Message);
             }
             return RedirectToAction("dashboard", "Home");
+        }
+
+        [HttpPost]
+        public ActionResult ConvertToWord(string htmlContent)
+        {
+            try
+            {
+                Application word = new Application();
+                Document document = word.Documents.Add();
+                Microsoft.Office.Interop.Word.Range range = document.Range(0, 0);
+                range.InsertXML(htmlContent);
+
+                string tempFilePath = Path.GetTempFileName();
+                document.SaveAs2(tempFilePath, WdSaveFormat.wdFormatDocumentDefault);
+
+                document.Close();
+                word.Quit();
+
+                return File(tempFilePath, "application/msword", "converted-file.doc");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Convert to Word Error "+ex.Message);
+                return RedirectToAction("dashboard","Home");
+            }
         }
 
 
