@@ -73,5 +73,40 @@ namespace Live_Document___Rich_Text_Editor.Models
                 Console.WriteLine("Save document model try "+e.Message);
             }
         }
+
+        public DocumentEntityModel getSpecificDocument(int docId,int UserId)
+        {
+            DocumentEntityModel model = new DocumentEntityModel();
+            try
+            {
+
+                SqlConnection conn = new SqlConnection("Data Source=5CG9441HWP;Initial Catalog=TextEditor;Integrated Security=True;Encrypt=False;");
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = $"SELECT * FROM DOCUMENTS WHERE DocumentId= {docId} AND UserId = {UserId}";
+
+                SqlDataReader reader = command.ExecuteReader();
+                
+                if (reader.Read())
+                {
+                    
+                    model.DocumentId = (int)reader["DocumentId"];
+                    model.DocumentTitle = (string)reader["DocumentTitle"];
+                    model.Content = (string)reader["Content"];
+                    model.CreatedOn = (DateTime)reader["CreatedAt"];
+                    model.LastEdited = (DateTime)reader["LastEdited"];
+
+                    return model;
+                }
+
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.Message);
+
+            }
+
+            return model;
+        }
     }
 }

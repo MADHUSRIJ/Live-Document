@@ -14,6 +14,7 @@ namespace Live_Document___Rich_Text_Editor.Controllers
     {
         public static UserModel User { get; set; }
         public static DocumentModel document { get; set; }
+        public static DocumentEntityModel Specificdocument { get; set; }
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration _configuration;
         public HomeController(IConfiguration configuration)
@@ -181,7 +182,26 @@ namespace Live_Document___Rich_Text_Editor.Controllers
             return View();
         }
 
-       
+        [HttpGet]
+        public IActionResult ViewDocs(int docId)
+        {
+            Console.WriteLine("Document Id " + docId + " User " + User.id);
+            try
+            {
+                Console.WriteLine("Document Id " + docId + " User " + User.id);
+                var specificDocument = document.getSpecificDocument(docId, Convert.ToInt32(User.id));
+                var documentList = new List<DocumentEntityModel> { specificDocument };
+                return View(documentList);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("View Docs Controller " + ex.Message);
+                return RedirectToAction("dashboard", "Home");
+            }
+        }
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

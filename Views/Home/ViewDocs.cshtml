@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Live_Document___Rich_Text_Editor.Models.DocumentEntityModel>
+
+@{
+    ViewData["Title"] = "ViewDocs";
+    Layout = "~/Views/Shared/LayoutHome.cshtml";
+}
+
+
+
+<div class="" style="background-color:aliceblue;padding:2em;height:30em;overflow: auto;">
+    @foreach (var data in Model)
+    {
+        <h1> @data.DocumentTitle</h1>
+        <p style="margin-top: 2em;"> @data.Content</p>
+    }
+</div>
