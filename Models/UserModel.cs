@@ -47,6 +47,34 @@ namespace Live_Document___Rich_Text_Editor
             return false;
         }
 
+        public bool registerUser(string userName, string password, string mobile, string email)
+        {
+            string sqlConnectionString = "Data Source=localhost;Initial Catalog=TextEditor;Integrated Security=True;Encrypt=False";
+
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(sqlConnectionString))
+                {
+
+                    SqlCommand cmd = new SqlCommand($"INSERT INTO USERS(UserName, Password, Mobile, Email) VALUES ('{userName}','{password}','{mobile}','{email}')", connection);
+                    connection.Open();
+                    int Rowsaffected = cmd.ExecuteNonQuery();
+
+                    if (Rowsaffected > 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            catch (SqlException e)
+            {
+                Console.WriteLine("Register User "+e.Message);
+            }
+            return false;
+        }
+
     }
 
 

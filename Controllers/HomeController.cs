@@ -98,6 +98,18 @@ namespace Live_Document___Rich_Text_Editor.Controllers
         }
 
         [HttpPost]
+        public IActionResult register(UserModel user)
+        {
+
+            if(user.registerUser(Request.Form["username"], Request.Form["Password"], Request.Form["phone"], Request.Form["email"]))
+            {
+                return login(user);
+            }
+            return RedirectToAction("Index");
+
+        }
+
+        [HttpPost]
         public IActionResult Submit()
         {
             try
