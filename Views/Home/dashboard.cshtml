@@ -145,8 +145,8 @@
                             </div>
                             <div class="d-flex align-items-center justify-content-sm-evenly" style="margin-top:1em;">
                                 <a href="@Url.Action("ViewDocs", "Home", new { docId = @documents.DocumentId })"><i class="bi bi-eye-fill" style="font-size:1.5em;color: rgba(50, 176, 229, 0.87);"></i> </a>
-                                <i class="bi bi-pencil-square" style="font-size:1.5em;color: rgba(110, 187, 56, 0.87);"></i>
-                                <i class="bi bi-x-square-fill" style="font-size:1.5em;color: rgba(243, 90, 90, 0.87);"></i>
+                                <a href="@Url.Action("EditDocs", "Home", new { docId = @documents.DocumentId })"><i class="bi bi-pencil-square" style="font-size:1.5em;color: rgba(110, 187, 56, 0.87);"></i> </a>
+                               <i class="bi bi-x-square-fill" style="font-size:1.5em;color: rgba(243, 90, 90, 0.87);"></i>
                             </div>
                         </div>
                     }

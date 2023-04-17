@@ -102,11 +102,41 @@ namespace Live_Document___Rich_Text_Editor.Models
             }
             catch (SqlException e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Get specific document model "+e.Message);
 
             }
 
             return model;
+        }
+
+        public bool UpdateDocument(int docId,string DocumentTitle,string Content,int UserId)
+        {
+            try
+            {
+
+                SqlConnection conn = new SqlConnection("Data Source=5CG9441HWP;Initial Catalog=TextEditor;Integrated Security=True;Encrypt=False;");
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = $"UPDATE DOCUMENTS SET DocumentTitle = '{DocumentTitle}',Content = '{Content}',LastEdited = '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}' WHERE DocumentId= {docId} AND UserId = {UserId}";
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+
+                    Console.WriteLine("Updated Successfully");
+
+                    return true;
+                }
+
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine("Update document model "+e.Message);
+
+            }
+
+            return false;
         }
     }
 }

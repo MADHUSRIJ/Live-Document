@@ -185,7 +185,6 @@ namespace Live_Document___Rich_Text_Editor.Controllers
         [HttpGet]
         public IActionResult ViewDocs(int docId)
         {
-            Console.WriteLine("Document Id " + docId + " User " + User.id);
             try
             {
                 Console.WriteLine("Document Id " + docId + " User " + User.id);
@@ -200,6 +199,46 @@ namespace Live_Document___Rich_Text_Editor.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult EditDocs(int docId)
+        {
+            try
+            {
+                Console.WriteLine("Document Id " + docId + " User " + User.id);
+                DocumentModel model = new DocumentModel();
+                var document = model.getSpecificDocument(docId, Convert.ToInt32(User.id));
+                return View(document);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Edit Docs Get Catch "+ex.Message);
+            }
+            return RedirectToAction("dashboard", "Home");
+        }
+
+        [HttpPost]
+        public IActionResult EditDocs()
+        {
+            int docId = Convert.ToInt32(Request.Form["docId"]);
+            string docTitle = Request.Form["DocumentTitle"];
+            string Content = Request.Form["Content"];   
+            try
+            {
+                Console.WriteLine("Edit Document Id " + Request.Form["docId"] + " User " + User.id);
+                if(document.UpdateDocument(docId,docTitle,Content, Convert.ToInt32(User.id)))
+                {
+                    Console.WriteLine("Update Success");
+                }
+
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Edit Docs Controller " + ex.Message);
+                
+            }
+            return RedirectToAction("dashboard", "Home");
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
